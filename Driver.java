@@ -1,25 +1,22 @@
+import java.util.ArrayList;
 
 public class Driver {
 
 	public static void main(String[] args) {
-		String sDate = "10/10";
-		int iDate = 0;
-		//Remove the slash from the date
-		sDate = sDate.replaceAll("/", "");
-		System.out.println(sDate);
 
-		//Cast the string to an int
-		try
+		ArrayList<Course> list = new ArrayList<Course>();
+		Course initial = new Course();
+		list = initial.readFile("HomeworkTest.txt");
+		for(int i = 0; i < list.size(); i++)
 		{
-			iDate = Integer.parseInt(sDate);
+			System.out.println(list.get(i).getName());
+			for(int j = 0; j < list.get(i).getAssignmentList().size(); j++)
+			{
+				System.out.println(list.get(i).getAssignment(j).getName() + ", " + list.get(i).getAssignment(j).getStringDueDate());
+			}
+			System.out.println("");
 		}
-		catch (NumberFormatException e)
-		{
-			iDate = -1;
-		}
-		
-		System.out.println(iDate);
-
 	}
 
 }
+
